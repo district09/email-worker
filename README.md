@@ -1,22 +1,14 @@
 # README #
-
-Short discrition of this application
+The email-worker component is one of the components that are part of the email-service. The email-worker provides asynchronous communication between senders and the exchange service. It is the email-worker component that will effectively try to send the email with a third-party email exchange, i.e. MS Exchange. 
 
 ## Features ##
 
-* A
-* List
-* Off
-* All
-* The
-* Features
+* Both creation and retry events are picked up from the message broker and deliverd to the exchange services.
+* Retry events are created when the email could not be send initially with the exchange services. 
+* Status events are created when the email is send or could not be delivered to exchange after X retry's.
 
 ## Security ##
 Always keep following security rules in mind when using credentials!
-
-### How to use the appliction ###
-
-A short discription on which security measures are implemented and how to get them to work. 
 
 ### Do's ###
 
@@ -35,9 +27,20 @@ A short discription on which security measures are implemented and how to get th
 
 ## Dependencies
 
+* A running SQL instance.
+* A running message broker that supports the amqp protocol.
+* A running email-api instance. 
+* A MS Exchange (online) account. (This is optional if you put the email-worker in *mock* mode)
+
 ## Building the source code ##
 
 ### Locally ###
+
+Package the Quarkus application.
+```./mvnw package```
+
+Run the packaged application.
+```java -jar target/email-worker-3.0-SNAPSHOT-runner.jar```
 
 ### S2I ###
 

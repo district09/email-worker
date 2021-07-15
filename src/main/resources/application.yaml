@@ -1,0 +1,34 @@
+quarkus:
+  native:
+    additional-build-args: "--allow-incomplete-classpath"
+  http:
+    port: 8080
+  application:
+    name: email-worker
+  qpid-jms:
+    url: ${QUARKUS_QPID_JMS_URL:amqp://localhost:5672}
+    username: ${QUARKUS_QPID_JMS_USERNAME:admin}
+    password: ${QUARKUS_QPID_JMS_PASSWORD:admin}
+exchange:
+  mock: false
+  max-retries: 10
+  retry-delay: 1000
+  username: "${EXCHANGE_USERNAME:user}"
+  password: "${EXCHANGE_PASSWORD:password}"
+  url: "${EXCHANGE_URL:url}"
+  mailbox: "${EXCHANGE_MAILBOX:mailbox}"
+queue:
+  prefix: "${QUEUE_PREFIX:emailV3}"
+  creation: "${QUEUE_CREATION:creation}"
+  status: "${QUEUE_STATUS:status}"
+  retry: "$QUEUE_RETRY:retry}"
+service-info:
+  id: "${SERVICE_INFO_ID:email-api}"
+  name: "${SERVICE_INFO_NAME:email-api}"
+  description: "${SERVICE_INFO_DESCRIPTION:Email - API}"
+  protocol: "${SERVICE_INFO_PROTOCOL:https}"
+  owners: "{SERIVCE_INFO_OWNERS:District09}"
+  version: "${SERVICE_INFO_VERSION:3.0.0}"
+  host: "${SERVICE_INFO_HOST:localhost:8080}"
+  projectRepo: "${SERVICE_INFO_PROJECT_REPO:https://github.com/district09/email-api.git}"
+  projectHome: "${SERVICE_INFO_PROJECT_HOME:https://github.com/district09/email-api.git}"
