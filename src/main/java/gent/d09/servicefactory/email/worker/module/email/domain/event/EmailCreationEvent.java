@@ -1,6 +1,7 @@
 package gent.d09.servicefactory.email.worker.module.email.domain.event;
 
 import gent.d09.servicefactory.email.worker.module.email.domain.Attachment;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@RegisterForReflection
 public class EmailCreationEvent extends Event {
     private String applicationId;
     private String from;
