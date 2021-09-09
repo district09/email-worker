@@ -19,6 +19,7 @@ import microsoft.exchange.webservices.data.property.complex.EmailAddressCollecti
 import microsoft.exchange.webservices.data.property.complex.FileAttachment;
 import microsoft.exchange.webservices.data.property.complex.MessageBody;
 import microsoft.exchange.webservices.data.property.complex.time.TimeZoneDefinition;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -169,7 +170,7 @@ public class EmailService {
             exchangeService.setCredentials(credentials);
             return exchangeService;
         } catch (Exception e) {
-            log.error("Failed to connect to Exchange: " + e.getMessage());
+            log.error("Failed to connect to Exchange: " + e.getMessage() + " | Stacktrace: " + ExceptionUtils.getStackTrace(e));
             throw e;
         }
     }

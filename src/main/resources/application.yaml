@@ -1,6 +1,6 @@
 quarkus:
   native:
-    additional-build-args: "--allow-incomplete-classpath"
+    additional-build-args: "--allow-incomplete-classpath, -H:ResourceConfigurationFiles=resources-config.json, -H:ReflectionConfigurationFiles=reflection-config.json"
   http:
     port: 8080
   application:
